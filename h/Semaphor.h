@@ -8,7 +8,8 @@ public:
     Semaphore (int init = 1);
     virtual ~Semaphore ();
     virtual int wait (Time maxTimeToWait);
-    virtual int signal(int n = 0);
+    // virtual int signal(int n = 0); 2020 projekat
+    virtual int signal(); // 2021 projekat
     int val () const; // Returns the current value of the semaphore
 private:
     KernelSem* myImpl;

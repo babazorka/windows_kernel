@@ -11,10 +11,19 @@ int Semaphore::wait(Time maxTimeToWait){
     int ret = this->myImpl->wait(maxTimeToWait);
     return ret;
 };
-int Semaphore::signal(int n){    
-    int ret = this->myImpl->signal(n);
+
+// 2020 projekat
+// int Semaphore::signal(int n){    
+//     int ret = this->myImpl->signal(n);
+//     return ret;
+// };
+
+// 2021 projekat
+int Semaphore::signal(){    
+    int ret = this->myImpl->signal();
     return ret;
 };
+
 int Semaphore::val() const{
     int ret = this->myImpl->val;
     return ret;

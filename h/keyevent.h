@@ -8,11 +8,18 @@
 #define _OS1_KEYBOARD_EVENT_
 
 #include <thread.h>
+#include "IVTEntry.h" //dodato 
+
+#define PREPAREENTRY(numEntry,call)\
+void interrupt inter##numEntry(...); \
+IVTEntry newEntry##numEntry(numEntry, inter##numEntry); \
+void interrupt inter##numEntry(...) {\
+    newEntry##numEntry.signal();\
+    if (call == 1)\
+        newEntry##numEntry.callOld();\
+};
 
 class BoundedBuffer;
-
-
-
 class KeyboardEvent :public Thread{
 public:
 

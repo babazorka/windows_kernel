@@ -35,7 +35,38 @@ int KernelSem::wait(Time maxTimeToWait){
     }
     return 1;
 };
-int KernelSem::signal(int n){
+
+// 2020 projekat
+// int KernelSem::signal(int n){
+//     PCB* pcb = NULL;
+//     if(!n){
+//         this->val++;
+//         if(this->val<1){
+//             pcb = this->blockedPCBs.removeFirst();
+//             if(pcb != NULL){
+//                 if(pcb->getState() == BLOCKED){
+//                     Scheduler::put(pcb->setState(READY));
+//                     return 1;
+//                 }
+//             }
+//             return 0;
+//         }
+//     }
+//     else if(n > 0){
+//         int copy = n;
+//         while(this->sleepingPCBs->checkTimeFirst() != -1 && copy-- > 0){
+//             pcb = sleepingPCBs->removeFirst();
+//             if(pcb->getState() == SLEEPING)
+//                 Scheduler::put(pcb->setState(READY));
+//         }
+//         return n-copy;
+//     }
+//     return n;
+// };
+
+// 2021 projekat
+int KernelSem::signal(){
+    int n = 0;
     PCB* pcb = NULL;
     if(!n){
         this->val++;
